@@ -135,7 +135,7 @@ double BSM_Spectrum(double E1, double cost1) {
     //Prepare parameters
   const gsl_rng_type *T;
   gsl_rng *r;
-  size_t calls = 10000;
+  size_t calls = 100000;
   gsl_rng_env_setup();
   T = gsl_rng_default;
   r = gsl_rng_alloc(T);
@@ -407,7 +407,7 @@ void RunRandomScan() {
   printf("%E\n", pow(10.0, randmass));
   sett.g = 1.0;
   sett.m2 = pow(10.0, randmass);
-  Spectrum bsmSpec = GenerateBSM(50, 50);
+  Spectrum bsmSpec = GenerateBSM(25, 25);
   //Consider 90% and 95% confidence intervals
   double res90 = FitToSpectrum(bsmSpec, 1.64485);
   double res95 = FitToSpectrum(bsmSpec, 1.95996);
@@ -466,14 +466,14 @@ void ScanAll() {
 }
 
 void testrun() {
-  sett.filename = "results90/ScalarElectron.csv";
+  sett.filename = "results/dump.csv";
   sett.pMatrixElement = M2VectorMuonRLCoupling;
   double res;
   double randmass = -3.0;
   printf("%E\n", pow(10.0, randmass));
   sett.g = 1.0;
   sett.m2 = pow(10.0, randmass);
-  Spectrum bsmSpec = GenerateBSM(100, 100);
+  Spectrum bsmSpec = GenerateBSM(25, 25);
   res = FitToSpectrum(bsmSpec, 1.95996);
   printf("%E,%E,%E\n", sett.m2, FitToSpectrum(bsmSpec, 1.64485),
          FitToSpectrum(bsmSpec, 1.95996));
