@@ -473,13 +473,18 @@ void testrun() {
   printf("%E\n", pow(10.0, randmass));
   sett.g = 1.0;
   sett.m2 = pow(10.0, randmass);
-  Spectrum bsmSpec = GenerateBSM(25, 25);
+  Spectrum bsmSpec = GenerateBSM(10, 10);
   res = FitToSpectrum(bsmSpec, 1.95996);
   printf("%E,%E,%E\n", sett.m2, FitToSpectrum(bsmSpec, 1.64485),
          FitToSpectrum(bsmSpec, 1.95996));
 }
 
 int main(int argc, char *argv[]) {
+/*
+real	2m18.210s
+user	11m10.440s
+sys	0m0.487s
+  testrun();*/
   ScanAll();
   return 0;
 }
